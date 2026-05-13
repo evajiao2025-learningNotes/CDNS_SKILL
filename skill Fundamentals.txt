@@ -1,0 +1,87 @@
+
+====================
+
+SKILL Fundamentals
+
+====================
+Source:
+https://www.youtube.com/watch?v=VMfdpA4UGS0&t=4203s
+
+
+
+
+Terminology:
+
+CIW : command interpreter window
+
+
+
+
+----------
+STILL function do:
+Example: open a design window, place instances
+- retrieve the bounding box, 
+
+----------
+STILL Function: compute a data value 
+- assign the return value to a skill variable
+	mySelectedData = geGetSelSet()
+
+- pass the return value to another SKILL function
+	TrPrintInfo ( geGetSelSet() )
+
+----------
+Use in Virtuoso
+	virtuoso &
+	virtuoso -nograph
+	virtuoso -replay <log-file>
+Virtuoso file 
+	/tools/dfll/local
+Environment file
+	.cdsinit file
+	
+----------
+
+comments
+	; single line comment
+	/* 
+	multiple line comments
+	*/
+----------
+Data
+	integer		5			c_count
+	float		5.3			f_width
+	string		"this is text"		t_msg
+	list		( 1 "two" 3 4 )		l_items
+	Boolean		t ;;; true
+			nil ;;; false
+
+----------
+Variables
+	naming		Line_Count1
+	assignment	x = 5
+	retrieval	x
+	
+
+	
+
+notes：	retrieval：
+	It typically means:
+	Reading design objects (cells, nets, shapes)
+	Querying properties/attributes
+	Navigating hierarchy (top cell → instances → pins → nets)
+
+Notes: first letter of variable can not be digit or question mark
+	variable name case sensitive
+
+
+
+----------
+Function call
+	C syntax	strcat( "first" " second" )
+	lisp syntax 	( strcat "Good" " day" )
+----------
+Operators 
+	operator	4 + 5 * 6
+	functions	plus( 4 times( 5 6 ))
+
