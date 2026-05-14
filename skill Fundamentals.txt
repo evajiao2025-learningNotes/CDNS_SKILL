@@ -184,5 +184,3 @@ Using sprint to create strings
 sprintf( myMessage "located data in file %s" fileName)
 myMessage = sprintf( nil "Located data in file %s" fileName )
 
-----------
-Function call
