@@ -6,8 +6,7 @@ SKILL Fundamentals
 ====================
 Source:
 https://www.youtube.com/watch?v=VMfdpA4UGS0&t=4203s
-
-
+https://www.youtube.com/watch?v=VMfdpA4UGS0&list=PLjRIBQDeKyRqWp8Uyk6gIYmRSE2ltCX3s&index=2
 
 
 Terminology:
@@ -78,10 +77,61 @@ Notes: first letter of variable can not be digit or question mark
 
 ----------
 Function call
+Execute a block of code to perform a specific task
+Accepts 3 syntax
 	C syntax	strcat( "first" " second" )
-	lisp syntax 	( strcat "Good" " day" )
+	lisp syntax 	( strcat "first" " second" )
+	omit parentheses strcat "first" " second" ; space separate function arguments
+	
+Call multiple lines
+	strcat( "A"
+		"SKILL" " program"
+		" tutorial" ) => "A SKILL program tutorial"
+
+Several function calls in a single line
+	eln = strcat( "Eva" "Learn" "Note" ) println( eln ) =>nil
+		SKILL expression return value of the last SKILL expression
+		all preceding return values are ignored
+
 ----------
 Operators 
 	operator	4 + 5 * 6
 	functions	plus( 4 times( 5 6 ))
 
+Example 
+	two same functions
+	( 3**2 + 4**2) **.5 => 5.0
+	expt( plus( expt( 3 2 ) expt( 4 2 )) .5 ) =>5
+
+Notes, no extra parenthesis
+	((3+4))*5 , wrong!
+
+	Operator	Function	
+	++a 		preincrement
+	a++		post increment
+	a**b		expt
+	a*b a/b		times quotient
+	a+b a-b		plus difference
+	a==b a!=b	equal nequal
+	a=b		sets	(assignment)
+
+
+"tracef" function
+	shows all the steps how evaluate the function
+	example tracef( plus times )
+"untrace()" turn off tracing
+tracef( nill ) will not turn tracing off
+
+
+----------
+Function Arguments
+	Argument
+	- expected data type of the argument
+	- required/ Optional/  a keyword 
+types
+	required arguments with no optional arguments	
+	keyword arguments with no required and no optional arguments	
+
+
+----------
+Function call
