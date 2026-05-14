@@ -132,6 +132,57 @@ types
 	required arguments with no optional arguments	
 	keyword arguments with no required and no optional arguments	
 
+See list of arguments for a given function
+	arglist( 'printf ) => (t_string \@optional g_general "tg") 
+		; pass a string followed by any type of arg
+
+SKILL function argument examples
+Required arguments: 
+must provide each required argument
+In prescribed order
+	hiSetFilterOptions( g_accelInput g_prompt g_output greturnAccel
+			g_typedReturn g_errorOutput g_warnOutput)
+Optional Arguments:
+Each optional argument has default value
+If provide optional argument, must provide all the preceding optional arguments
+	view( t_file [g_boxSpec][g_title][g_autoUpdate ][l_iconPosition])
+
+Keyword Arguments: 
+when provide a keyword argument you must preface it with the name of the formal argument
+You can provide keyword arguments in any order
+	geOpen(	?window		w_windowId
+		?lib		t_lib
+		?cell		t_cell
+		?view		t_view
+		?viewType	t_viewType
+		?mode		t_mode	) =>t / nil
+
+----------
+Display Data in CIW 
+
+print( g_vale [p_outputPort ])	=> nil
+println( g_value [p_outputPort ] ) => nil
+printf( t_formatString [ g_arg1 ... ] ) =>
+	
+example 
+	printf( "\n%-15s %-15s %-10d" 
+		layerName purpose recCount )
+	> plist = '(1 2 3)
+	(1 2 3)
+	> printf( "This is a list: %L\n" aList )
+	This is a list: (1 2 3)
+	t	
+
+d	digit(integer)
+f	floating point	
+s	string or symbol
+c	character
+n	numeric
+L	default format	 
+
+Using sprint to create strings
+sprintf( myMessage "located data in file %s" fileName)
+myMessage = sprintf( nil "Located data in file %s" fileName )
 
 ----------
 Function call
