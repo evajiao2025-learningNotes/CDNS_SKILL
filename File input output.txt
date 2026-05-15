@@ -1,0 +1,133 @@
+
+====================
+
+File Input Output
+
+====================
+Source:
+https://www.youtube.com/watch?v=FrCpkoFDUTo&list=PLjRIBQDeKyRqWp8Uyk6gIYmRSE2ltCX3s&index=5
+
+
+----------
+Writing data to file
+
+outfile(
+	S_fileName [ t_mode ] [ g_openHiddenFile ] )
+
+	example:
+	myPort = outfile( "/tmp/myFile" )
+		=> port:"/tmp/myFile"
+	for( i 1 5
+		println( list( "Number:" i) myPort )
+	)
+	close( myPort )
+	myPort = nil 
+
+	/tmp/myFile contains:
+	("Number:" 1)
+	("Number:" 2)
+	("Number:" 3)
+	("Number:" 4)
+	("Number:" 5)
+
+
+
+
+fprintf(
+	p_port t_formatString
+	[ g_arg1 ...]  )			=> t
+
+print and printfln accept optional argumen be an output port associated with  target file
+fprintf function does not accept optional port argument
+Fprintf function write formatted data to a file
+
+
+	example:
+	myPort = outfile( "/tmp/myFile" )
+		=> port:"/tmp/myFile"
+	for( i 1 5
+		fprintf( myPort "\nNumber: %d" i )
+	)
+	close( myPort )
+	myPort = nil 
+
+	/tmp/myFile contains:
+	Number: 1
+	Number: 2
+	Number: 3
+	Number: 4
+	Number: 5
+
+
+
+
+----------
+Reading data from a file
+infile(
+	S_fileName)	=> p_inport / nil
+	Obtain an input port on a file
+
+
+gets(
+	g_variableName [p_inputPort ])
+		=> t_string /nil
+	reads the next line from the file and stores it in the variable as a string
+
+	Example:
+	let( ( inPort nextLine )
+		inPort = infile( "~.cshrc" )
+		when( inPort
+			while( gets( nextLine inPort )
+				println( nextLine )
+			) ; while	
+			close( inPort )
+		} ;when
+	) ; let
+
+
+fscanf(
+	
+	g_inputPort t_formatString
+	[s_var1 ... ])
+		=> x_items /nil
+	reads data from file with "conversion control string"
+	returns the number of data items matched
+
+Example:
+	let( ( inPort word )
+		inPort = infile( "~.cshrc" )
+		when( inPort
+			while( fscanf( inPort "%s" word )
+				println( nextLine )
+			) ; while	
+			close( inPort )
+		} ;when
+	) ; let
+
+
+----------
+Open a text window
+
+View ( 
+	t_file
+	[ g_boxSpec ] 
+	[ g_title ] 
+	[ g_autoUpdate ] 
+	[ g_iconPosition ] 
+	[ g_deviceMode ] 
+)	=> windowId / nil
+Displace text file in a read only window
+	example:
+	view( "~/SKILL/.cdsinit" )
+	example:
+	view( "~/SKILL/.cdsinit"	; pathname
+		nil			;default location
+		"My Log File"		; window 
+		t			; auto update
+	)	=> window:4
+
+
+
+
+
+

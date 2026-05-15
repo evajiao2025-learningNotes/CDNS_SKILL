@@ -1,0 +1,37 @@
+
+====================
+
+SKILL table
+
+====================
+Source:
+https://www.youtube.com/watch?v=FrCpkoFDUTo&list=PLjRIBQDeKyRqWp8Uyk6gIYmRSE2ltCX3s&index=5
+
+
+----------
+Creating SKILL table
+
+makeTable( S_name [g_default_vale ] ) 	=> o_table
+Store data that is accessed using a key
+Keys can be any data type, including list
+Example:
+	WidthTable = makeTable( "Width" nil )
+	widthTable[ "met1width" ] = 1.1
+	widthTable[ "met2width" ] = 2.2
+	widthTable[ "met3width" ] = 3.3
+read:
+	widthTable[ "met1width" ] 	=> 1.1
+	widthTable[ "met4width" ] 	=> nil
+
+----------
+I/O with SKILL table
+
+writeTable( SfileName o_table )
+	WidthTable = nameTable( "Width" nil )
+	writeTable("width_table.txt WidthTable)
+
+readTable( S_fileName o_table )
+	table must exist before calling readTable
+	readTable("width_table.txt WidthTable)
+
+
