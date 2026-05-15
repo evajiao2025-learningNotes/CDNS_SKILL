@@ -1,0 +1,102 @@
+
+====================
+
+Bounding Box with skill
+
+====================
+Source:
+https://www.youtube.com/watch?v=HX9IY-Tm29s&list=PLjRIBQDeKyRqWp8Uyk6gIYmRSE2ltCX3s&index=4
+
+
+----------
+Two dimensional point
+SKILL language represents a 2D point as a two element list
+Colon operator build a list 
+	xValue = 300
+	yValue = 400
+	P = xValue:yValue => ( 300 400 )
+Function xCoord yCoord	
+	xCoord( P ) 	=>	300
+	yCoord( P ) 	=>	400
+
+
+----------
+Computing points
+
+The operator combines naturally with arithmetic operator
+It has lower precedence than + or *
+	3+4*5:4+7*7 	=> ( 23 60 )
+
+Computing from another point
+	example: given int P, apply offset dx and dy inn both directions
+	Q = xCoord( P )+dx:yCoord( P )+dy
+
+----------
+Bounding Box
+SKILL language represents a 2D point as a two element list
+First: lower left corner
+Second: upper right corner
+	example (( 300 400 )( 500 450 ))
+	ll = 300:400
+	ur = 500:450
+
+Creating a bounding box and retrieving elements example
+	ll = 300:400
+	ur == 500:450
+	bBox = list( ll ur ) 	=> (( 300 400 )( 500 450 ))
+	bBox = list( 300:400 500:450 ) 	=> (( 300 400 )( 500 450 ))
+
+Function: lowerLeft upperRight
+	lowerLeft( bBox ) 	=> ( 300 400 )
+	upperRight( bBox ) 	=> ( 500 450 )	
+	xCoord( lowerLeft( bBox )) 	=>  300 
+	yCoord( upperRight( bBox )) 	=>  450 
+
+----------
+Practice
+
+Offset a Bounding Box
+Create an offset bounding box B from bounding box A
+	boxLLx = xCoord( lowerLeft( A ) )+dx
+	boxLLy = xCoord( lowerLeft( A ) )+dy
+	boxURx = xCoord( upperRight( A ) )+dx
+	boxURy = xCoord( upperRight( A ) )+dy
+	B = list( boxLLx:boxLLy boxURx:boxURy)
+
+Find the smallest boundary box enclosing two bounding boxes
+Wite expressions that compute the smallest bounding box containing two bounding box A and B
+	llAx =  xCoord( lowerLeft( A ) )
+	llBx =  xCoord( lowerLeft( B ) )
+	llAy =  yCoord( lowerLeft( A ) )
+	llBy =  yCoord( lowerLeft( B ) )
+	urAx = xCoord( upperRight( A ) )
+	urBx = xCoord( upperRight( B ) )
+	urAy = yCoord( upperRight( A ) )
+	urBy = yCoord( upperRight( B ) )
+	boxLL = min( llAx llBx ):min( llAy llBy )
+	boxUR = max( urAx urBx ):max( urAy urBy )
+	smallest_bbox = list( boxLL boxUR)
+
+Find intersection of two bounding boxes
+	llAx =  xCoord( lowerLeft( A ) )
+	llBx =  xCoord( lowerLeft( B ) )
+	llAy =  yCoord( lowerLeft( A ) )
+	llBy =  yCoord( lowerLeft( B ) )
+	urAx = xCoord( upperRight( A ) )
+	urBx = xCoord( upperRight( B ) )
+	urAy = yCoord( upperRight( A ) )
+	urBy = yCoord( upperRight( B ) )
+	boxLL = max( llAx llBx ):max( llAy llBy )
+	boxUR = min( urAx urBx ):min( urAy urBy )
+	inter_Box = list( boxLL boxUR)
+
+----------
+Bounding box combination of car and cdr functions
+	ll = car( bBox )	lower-left corner
+	ur = cadr( bBox )	upper right corner
+	llx = caar( bBox )	x-cood of lower left corner
+	lly = cadar( bBox )	y coor of lower left corner 
+	urx = caadr( bBox )	x coor of upper right corner
+	ury = cadadr( bBox )	y coor of upper right corner
+
+
