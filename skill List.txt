@@ -1,0 +1,139 @@
+
+====================
+
+SKILL LIST
+
+====================
+Source:
+https://www.youtube.com/watch?v=HX9IY-Tm29s&list=PLjRIBQDeKyRqWp8Uyk6gIYmRSE2ltCX3s&index=4
+
+----------
+What is SKILL list
+Ordered collection of SKILL data objects
+Elements of list can be any data type
+Including variables and other lists
+Empty list: nil
+
+Design database list examples:
+	shapes
+	points in a path / polygon
+	instances
+User interface list example:
+	Virtuoso Design Environment window currently open
+	Pull-down menus in a window
+	menu items in a menu
+
+
+----------
+STILL evaluator displays a list 
+-SKILL Evaluator surrounds elements of list with parenthesis 
+	( "rect" "polygon" "rect" "line" )
+	( 1 2 3)
+	( 1 (2 3) 4 5 (6 7 )) 
+		;some of the numbers are grouped to sublist
+	( ( "one" 1 ) ( "two" 2)
+		; some grouped in sublist, and sublist has a string and a integer
+	( "one" one)
+		; different types of item in the list
+
+Splits the list across multiple lines
+	- contains sublists
+	- has more than _itemsperline number of items
+
+----------
+Assign list 
+Examples:
+	aList = '( 1 2 3)
+	aLongList = '(1 2 3 4 5 6 7 8 9 0 )
+	aNestedList = '(1 ( 2 3 ) 4 5 ( 6 7 ))
+
+Create new list with ' operator 
+'( [ g_arg1 g_arg2 ...] ) 
+	'( 1 2 3 ) 	
+	'( "one' 1 )
+	'(( "one" 1 )( "two" 2 ))
+
+Create new list with the list Function
+list( [ g_arg1 g_arg2 ... ])
+	a = 1			1
+	b = 2			2
+	list( a b 3)		( 1 2 3 )
+	list( a**2+b**2 a**2-b**2)	( 5 -3 )
+
+----------
+Adding elements to existing list
+cons( g_element l_list )
+	result = ‘（ 2 3 ）		=》（ 2 3 ）
+	result = cons( 1 result )	=》（ 1 2 3 ）
+	
+append( l_list1 l_list2 )
+	result1 = ‘（ 4 5 6 ）		=》（ 4 5 6 ）
+	result2 = ‘（ 1 2 3 ）		=》（ 1 2 3 ）
+	bList = append( result1 result2 )	
+				=》（ 4 5 6 1 2 3 ）
+
+
+Notes:
+Difference between nil and '( nil )
+	nil is a list containing nothing length =0
+	'( nil ) builds a list, containing single element nil. Length = 1
+How to add element to the end of list
+	aList ='( 1 2 )
+	aList = append( aList list( 3 )) => ( 1 2 3 )
+
+Can I reverse the order of the argument to cons functions
+	cons('( 1 2 )'( 3 4 ))	=>(( 1 2 ) 3 4 )
+	cons('( 3 4 )'( 1 2 ))	=>(( 3 4 ) 1 2 )
+	cons( 3'( 1 2 )) 	=> ( 3 1 2 )
+	cons('( 1 2 ) 3 )	=> Error, cons arg2 should be a list
+Difference between cons and append
+	cons('( 1 2 )'( 3 4 )	=>(( 1 2 ) 3 4 )
+	append('( 1 2 )'( 3 4 )	=>( 1 2 3 4 )
+
+----------
+Frequent use SKILL List function
+car: first element 
+	numbers = '( 1 2 3 )
+	car( numbers ) 		=> 1
+cdr: tail of the list
+	cdr( numbers )		=> ( 2 3)
+nth
+	nth(1 numbers )		=> 2
+member:
+	if exist or to
+	member( 4 numbers)	=> nil
+	member (2 numbers )	=> ( 2 3 )
+length
+	length( numbers )
+last
+	last( numbers )		=> (3)
+reverse
+	reverse( numbers )	=> ( 3 2 )
+setof	
+	setof( x
+		'( 1 2 3 4 )
+		oddp( x ) )	=> (1  3 )
+
+
+
+----------
+Two dimensional point
+SKILL language represents a 2D point as a two element list
+Colon operator build a list 
+	xValue = 300
+	yValue = 400
+	P = xValue:yValue => ( 300 400 )
+Function xCoord yCoord	
+	xCoord( P ) 	=>	300
+	yCoord( P ) 	=>	400
+
+
+
+
+
+
+
+
+
+
+
